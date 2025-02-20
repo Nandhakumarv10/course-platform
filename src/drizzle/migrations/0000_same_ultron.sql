@@ -13,7 +13,9 @@ CREATE TABLE "courses" (
 CREATE TABLE "course_products" (
 	"courseId" uuid NOT NULL,
 	"productId" uuid NOT NULL,
-	"createdAt" timestamp with time zone DEFAULT now() NOT NULL,
+	"createdAt" timestamp with time zon
+	
+	e DEFAULT now() NOT NULL,
 	"updatedAt" timestamp with time zone DEFAULT now() NOT NULL,
 	CONSTRAINT "course_products_courseId_productId_pk" PRIMARY KEY("courseId","productId")
 );
