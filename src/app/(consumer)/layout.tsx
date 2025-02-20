@@ -2,6 +2,7 @@ import { ReactNode, Suspense } from "react";
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import { Button } from "@/components/ui/button";
 
 export default function ConsumerLayout({
   children,
@@ -47,9 +48,9 @@ function Navbar() {
         <Suspense>
           <SignedOut>
             <div>
-              <button className="p-3 bg-black rounded-3xl text-white">
+              <Button className="p-3 bg-black rounded-3xl text-white" asChild>
                 <Link href="/sign-in">sign in</Link>
-              </button>
+              </Button>
             </div>
           </SignedOut>
         </Suspense>
