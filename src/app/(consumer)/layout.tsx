@@ -1,7 +1,7 @@
 import { ReactNode, Suspense } from "react";
 import Link from "next/link";
-import { UserButton } from "@clerk/nextjs";
-import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import { SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 
 export default function ConsumerLayout({
@@ -26,12 +26,21 @@ function Navbar() {
         <Suspense>
           <SignedIn>
             <Link
+              href="/admin"
+              className="hover:underline flex items-center px-2"
+            >
+              Admin
+            </Link>
+            <Link
               href="/course"
-              className="hover:bg-accent/10 flex items-center px-2"
+              className="hover:underline flex items-center px-2"
             >
               My Courses
             </Link>
-            <Link href="/purchase" className="flex items-center px-2">
+            <Link
+              href="/purchase"
+              className="hover:underline flex items-center px-2"
+            >
               Purchase History
             </Link>
             <div className="size-8 self-center">
@@ -47,11 +56,9 @@ function Navbar() {
         </Suspense>
         <Suspense>
           <SignedOut>
-            <div>
-              <Button className="p-3 bg-black rounded-3xl text-white" asChild>
-                <Link href="/sign-in">sign in</Link>
-              </Button>
-            </div>
+            <Button className="self-center" asChild>
+              <SignInButton>Sign In</SignInButton>
+            </Button>
           </SignedOut>
         </Suspense>
       </nav>
