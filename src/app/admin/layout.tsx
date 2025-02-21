@@ -17,10 +17,10 @@ export default function AdminLayout({
 function Navbar() {
   return (
     <header className="flex h-12 shadow bg-background z-10">
-      <nav className="flex gap-4 container">
+      <nav className="flex gap-4 p-5 justify-between items-center w-full">
         <div className="mr-auto flex items-center gap-2">
           <Link className="text-lg hover:underline" href="/admin">
-            Web Dev Simplified
+            Nandhu
           </Link>
           <Badge>Admin</Badge>
         </div>

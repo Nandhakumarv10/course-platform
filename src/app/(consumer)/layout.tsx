@@ -19,25 +19,25 @@ export default function ConsumerLayout({
 function Navbar() {
   return (
     <header className="flex h-12 shadow bg-background z-10">
-      <nav className="flex gap-4 w-full justify-between items-center pl-2 pr-2">
+      <nav className="flex justify-between items-center w-full gap-3 pl-5 pr-5">
         <Link
-          className="mr-auto text-lg hover:underline flex items-center"
+          className="mr-auto text-sm hover:underline flex items-center "
           href="/"
         >
-          Web Dev Simplified
+          Logo
         </Link>
 
         <Suspense>
           <SignedIn>
             <AdminLink />
             <Link
-              className="hover:bg-accent/10 flex items-center px-2"
+              className="hover:bg-accent/10 flex items-center "
               href="/courses"
             >
               My Courses
             </Link>
             <Link
-              className="hover:bg-accent/10 flex items-center px-2"
+              className="hover:bg-accent/10 flex items-center"
               href="/purchases"
             >
               Purchase History
