@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import containerQueries from '@tailwindcss/container-queries'
 
 module.exports = {
     content: [
@@ -18,6 +19,6 @@ module.exports = {
       },
       extend: {},
     },
-    plugins: [],
+    plugins: [containerQueries],
   };
   
