@@ -5,29 +5,26 @@ import { DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { db } from "@/drizzle/db";
 import { CourseSectionTable, CourseTable, LessonTable } from "@/drizzle/schema";
-import { CourseForm } from "@/features/courses/components/CourseFrom"; // Fixed import
-import { getCourseIdTag } from "@/features/courses/db/cache/courses";
+import { CourseForm } from "@/features/courses/components/CourseFrom";
 import { SectionFormDialog } from "@/features/courseSections/components/SectionFormDialog";
 import { SortableSectionList } from "@/features/courseSections/components/SortableSectionList";
-import { getCourseSectionCourseTag } from "@/features/courseSections/db/cache";
 import { LessonFormDialog } from "@/features/lessons/components/LessonFormDialog";
 import { SortableLessonList } from "@/features/lessons/components/SortableLessonList";
-import { getLessonCourseTag } from "@/features/lessons/db/cache/lessons";
 import { cn } from "@/lib/utils";
 import { asc, eq } from "drizzle-orm";
 import { EyeClosed, PlusIcon } from "lucide-react";
 import { notFound } from "next/navigation";
-import { revalidateTag } from "next/cache";
+import { cache } from "react";
 
 export default async function EditCoursePage({
   params,
 }: {
-  params: { courseId: string }; // Fixed type
+  params: Promise<{ courseId: string }>;
 }) {
-  const { courseId } = params;
+  const { courseId } = await params;
   const course = await getCourse(courseId);
 
-  if (!course) return notFound();
+  if (course == null) return notFound();
 
   return (
     <div className="container my-6">
@@ -100,11 +97,7 @@ export default async function EditCoursePage({
   );
 }
 
-async function getCourse(id: string) {
-  revalidateTag(getCourseIdTag(id));
-  revalidateTag(getCourseSectionCourseTag(id));
-  revalidateTag(getLessonCourseTag(id));
-
+const getCourse = cache(async (id: string) => {
   return db.query.CourseTable.findFirst({
     columns: { id: true, name: true, description: true },
     where: eq(CourseTable.id, id),
@@ -128,4 +121,4 @@ async function getCourse(id: string) {
       },
     },
   });
-}
+});
