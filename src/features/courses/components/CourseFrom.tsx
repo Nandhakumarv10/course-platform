@@ -47,7 +47,7 @@ export function CourseForm({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex gap-6 flex-col"
+        className="flex gap-6 flex-col w-full h-screen"
       >
         <FormField
           control={form.control}

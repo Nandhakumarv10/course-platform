@@ -27,7 +27,7 @@ export default async function EditCoursePage({
   if (course == null) return notFound();
 
   return (
-    <div className="container my-6">
+    <div className=" w-full h-fit overflow-scroll  p-5 my-6">
       <PageHeader title={course.name} />
       <Tabs defaultValue="lessons">
         <TabsList>

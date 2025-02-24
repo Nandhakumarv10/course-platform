@@ -26,7 +26,7 @@ import {
 import { lessonSchema } from "../schemas/lessons";
 import { Textarea } from "@/components/ui/textarea";
 import { createLesson, updateLesson } from "../actions/lessons";
-import YouTubeVideoPlayer from "./YouTubeVideoPlayer";
+import { YouTubeVideoPlayer } from "./YouTubeVideoPlayer";
 export function LessonForm({
   sections,
   defaultSectionId,
@@ -74,7 +74,7 @@ export function LessonForm({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex gap-6 flex-col @container"
+        className="flex gap-6 flex-col h-96 overflow-scroll w-full p-5"
       >
         <div className="grid grid-cols-1 @lg:grid-cols-2 gap-6">
           <FormField
@@ -188,7 +188,7 @@ export function LessonForm({
         </div>
         {videoId && (
           <div className="aspect-video">
-            <YouTubeVideoPlayer />
+            <YouTubeVideoPlayer videoId={videoId} />
           </div>
         )}
       </form>

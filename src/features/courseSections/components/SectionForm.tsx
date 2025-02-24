@@ -59,10 +59,7 @@ export function SectionForm({
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex gap-6 flex-col @container"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-6 flex-">
         <div className="grid grid-cols-1 @lg:grid-cols-2 gap-6">
           <FormField
             control={form.control}
