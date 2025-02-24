@@ -17,11 +17,11 @@ export default async function CoursesPage() {
   return (
     <div className="w-full flex  flex-col justify-between items-center  my-6">
       <PageHeader
-        title="Courses"
+        title="Product"
         className="w-full flex justify-between items-center p-3"
       >
         <Button asChild>
-          <Link href="/admin/courses/new">New Course</Link>
+          <Link href="/admin/courses/new">New Product</Link>
         </Button>
       </PageHeader>
 
